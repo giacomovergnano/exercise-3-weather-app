@@ -17,7 +17,7 @@ document.getElementById('generate').addEventListener('click', () => {
 
       // console.log("data : ");
       console.log(data);
-      postData('/clientAddedData', {date:newDate, temp:data.main.temp, content:catchFeelings})
+      postData('/clientData', {date:newDate, temp:data.main.temp, content:catchFeelings})
   })
 });
 
@@ -28,8 +28,7 @@ const getWeather = async (baseURL, zipCode, apiKey) => {
       const apiResponse = await fetch(`${baseURL}${zipCode}&appid=${apiKey}`);
   // Transform into JSON
   const data = await apiResponse.json();
-  // console.log("getWeather : " )
-  // console.log(data)
+
   return data;
   }
   catch(error) {
@@ -65,16 +64,15 @@ const postData = async ( url = '', data = {})=> {
 const updateUI = async () => {
  const request = await fetch('/allData');
   // console.log("request : ");
-  // console.log(request);
+  console.log(request);
  try{
   // Transform into JSON
-  const finalData = await request.json();
-  // console.log("finalData");
-  // console.log(finalData);
+  const allData = await request.json();
+  console.log(allData);
   //Get Elements of Entries in HTML by ID and Update It in the Web App
-  document.getElementById('date').innerHTML = 'Date : ' + finalData.date ; 
-  document.getElementById('temp').innerHTML = 'Temperature now is : ' + Math.round(finalData.temp) + '&degC'; 
-  document.getElementById('content').innerHTML = 'Your feeling today is : ' + finalData.content ;
+  document.getElementById('date').innerHTML = 'Date : ' + allData.date ; 
+  document.getElementById('temp').innerHTML = 'Temperature now is : ' + allData.temp; 
+  document.getElementById('content').innerHTML = 'Your feeling today is : ' + allData.content ;
 
  }catch(error){
   console.log("error:", error);

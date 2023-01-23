@@ -35,7 +35,7 @@ app.get('/allData', (request, response)=>{
 });
 
 // POST route that adds incoming data to projectData
-app.post('/clientAddedData' ,(request, response)=>{
+app.post('/clientData' ,(request, response)=>{
 projectData = request.body
 console.log("Post")
 console.log(projectData);
