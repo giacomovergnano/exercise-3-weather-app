@@ -5,7 +5,7 @@ const apiKey = '1880783b539afcd68e7c6daa24f2265d&units=standard';
 
 // Create a new date instance dynamically with JS
 let d = new Date();
-let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
+let newDate = d.getMonth() + 1 + '.' + d.getDate() + '.' + d.getFullYear();
 
 
 // Event Listener to Generate Button on App Webpage 
